@@ -1,0 +1,47 @@
+
+.topic-answer .dialogue-list-item {
+  padding-bottom: .3rem !important;
+  background-color: #f8f5f5;
+}
+.topic-answer .dialogue-list-item .question {
+  padding: .3rem .4rem .7rem !important;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+.topic-answer .dialogue-list-item .question .portrait {
+  border-radius: 50%;
+  width: .9rem;
+  height: .89rem;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 3px 3px #033b5f;
+}
+.portrait img {
+  width: .9rem;
+  height: .89rem;
+  border-radius: 50%;
+}   
+.topic-answer .record .second {
+  margin-top: .1rem !important;
+}
+.topic-answer .record #trigger {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+.topic-answer .release_btns {
+  margin-top: .7rem;
+}
+#trigger .time {
+  width: 2.15rem;
+  height: 2.15rem;
+  top: 0.52rem;
+  left: 0.53rem;
+}
+#trigger .time .wrapper {
+  width: 1.08rem;
+  height: 2.15rem;
+}
+#trigger .time .circle {
+  width: 2.15rem;
+  height: 2.15rem;
+}

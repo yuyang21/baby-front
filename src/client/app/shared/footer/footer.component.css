@@ -1,0 +1,95 @@
+.footer-pos {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #fff;
+}
+.footer-up {
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+}
+.footer-up a {
+  width: 32.5%;
+  display: inline-block;
+  padding: 0.1rem 0 0rem;
+}
+.topic {
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+.footer-tip {
+  color: #c9c7c7;
+  margin-bottom: 0;
+  background-color: white;
+  font-size: 1.2rem;
+}
+.listen1, .topic1, .me1 {
+  /*width: 13%;*/
+  height: 0.43rem;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  background: url('/images/footer/listen1.png') no-repeat center center;
+  background-size: 11%;
+}
+.listen1,  .topic1, .me1, .listen2,  .topic2, .me2 {
+  height: 0.43rem;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  background: url('/images/footer/listen1.png') no-repeat center center;
+  background-size: 11%;
+}
+.listen2 {
+  background: url('/images/footer/listen2.png') no-repeat center center;
+  background-size: 11%;
+}
+
+.topic2 {
+  background: url('/images/footer/topic2.png') no-repeat center center;
+  background-size: 11%;
+}
+.topic1 {
+  background: url('/images/footer/topic1.png') no-repeat center center;
+  background-size: 11%;
+}
+
+.me2 {
+  background: url('/images/footer/me2.png') no-repeat center center;
+  background-size: 11%;
+}
+.me1 {
+  background: url('/images/footer/me1.png') no-repeat center center;
+  background-size: 11%;
+}
+.listen_icon1, .listen_icon2, .topic_icon1, .topic_icon2, .me_icon1, .me_icon2{
+  height: 0.6rem;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  background: url('/images/footer/listen_icon1.png') no-repeat center center;
+  background-size: 23%;
+}
+.listen_icon2 {
+  background: url('/images/footer/listen_icon2.png') no-repeat center center;
+  background-size: 23%;
+}
+
+.topic_icon2 {
+  background: url('/images/footer/topic_icon2.png') no-repeat center center;
+  background-size: 23%;
+}
+.topic_icon1 {
+  background: url('/images/footer/topic_icon1.png') no-repeat center center;
+  background-size: 23%;
+}
+.me_icon2 {
+  background: url('/images/footer/me_icon2.png') no-repeat center center;
+  background-size: 23%;
+}
+.me_icon1 {
+  background: url('/images/footer/me_icon1.png') no-repeat center center;
+  background-size: 23%;
+}

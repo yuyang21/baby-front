@@ -1,0 +1,64 @@
+<div class="main overflow-hid">
+  <!-- 轮播banner图 -->
+  <div id="slideBanner" class="slide-banner position-re overflow-hid" >
+    <div class="slide position-re">
+      <ul>
+        <li class="position-re text-center">
+          <a class="pic display-bl"><img src="/images/banner/banner1.jpg" /></a>
+        </li>
+        <li class="position-re text-center">
+          <a class="pic display-bl"><img src="/images/banner/banner1.jpg" /></a>
+        </li>
+        <li class="position-re text-center">
+          <a class="pic display-bl"><img src="/images/banner/banner1.jpg" /></a>
+        </li>
+        <li class="position-re text-center">
+          <a class="pic display-bl"><img src="/images/banner/banner1.jpg" /></a>
+        </li>
+      </ul>
+      <div class="dot">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 列表 -->
+  <div class="topic-list">
+    <div class="modules" *ngFor="let topic of topicInfos" [routerLink]="['/topic/detail',topic.topicId]">
+      <ul class="newlist cleafix overflow-hid margin-b-0 bg-white1">
+        <li class="text-justify">
+          <p class="list-title ft-444">{{topic.topic.content}}</p>
+          <div class="list-md overflow-hid"> 
+            <div class="list-lf fl">
+              <div class="portrait position-ab">
+                <img class="portraitUrl" src="{{topic.user.portraitUrl || '/images/main/head.png'}}" alt="">
+              </div> 
+              <img src="/images/main/horn.png" alt="" width="12.6%" class="horn fr">
+            </div>
+            <div class="list-rt fl">
+              <div class="names"><span class="name">{{topic.user.name || '黄蓉'}}</span><span class="child">{{topic.child.sex == 1 ? '男' : '女'}} &nbsp;&nbsp;&nbsp; {{topic.child.age}}岁</span></div>
+              <div class="honner">{{topic.child.honor || '荣誉'}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="rewards cleafix overflow-hid margin-b-0 bg-white1">
+        <li>
+          <img src="/images/main/reward11.png" alt="">
+          <span>{{topic.topic.listenCount || '100'}}</span>
+        </li>
+        <li>
+          <img src="/images/main/reward12.png" alt="">
+          <span>{{topic.topic.praiseCount || '100'}}</span>
+        </li>
+        <li>
+          <img src="/images/main/reward13.png" alt="">
+          <span>{{topic.topic.rewardCount || '100'}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

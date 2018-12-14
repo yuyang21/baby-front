@@ -1,0 +1,52 @@
+
+<div class="topic-answer">
+  <!--问题-->
+  <div class="dialogue-list-item">
+    <div class="question clearfix">
+      <div class="portrait"><img src="{{portraitUrl || '/images/main/head.png'}}" alt="" class="header"></div>
+      <div class="words ft-26"><p class="ft-24">{{question_name || '用户名'}}</p>{{question}}</div>
+    </div>
+  </div>
+  <!--录音-->
+  <div class="record">
+    <!--录音时长-->
+    <div class="second">
+        {{second}}"
+    </div>
+    <!--录音触发按钮-->
+    <div class="trigger" id="trigger" (click)="record_srart()">
+      <!--<div class="circle_process">
+        <div class="wrapper right">
+          <div class="circle rightcircle" id="circle_r"></div>
+        </div>
+        <div class="wrapper left">
+          <div class="circle leftcircle" id="circle_l"></div>
+        </div>
+      </div>-->
+      <div class="time">
+        <div class="wrapper right">
+            <div class="circle rightcircle" id="circle_r"></div>
+        </div>
+        <div class="wrapper left">
+            <div class="circle leftcircle" id="circle_l"></div>
+        </div>
+      </div>
+    </div>
+    <!--发布按钮 *ngIf="showMask"  (click)="showMask = false;"[routerLink]="['/']"-->
+    <div class="release_btns" *ngIf="showMenu">
+      <span class="audition" (click)="listen()">试听</span>
+      <span class="recorded" (click)="recorded()">重录</span>
+      <span class="release active" (click)="answer()">发布</span>
+    </div>
+  </div>
+</div>
+<div class="mask" *ngIf="showMask">
+    <div class="release_successed">
+        <div class="close" (click)="close();"></div>
+        <img class="successed" src="/images/topic/successed.png" alt="">
+        <div class="content">
+            <p>发布成功</p>
+            <p>邀请好友来听听吧～</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+.user-center {
+    min-height: 14rem;
+    margin: 0 auto;
+    padding-top: 1rem;
+    background-image: linear-gradient(to bottom, #42c7ff 0%, #31d8b4 100%);
+}
+.bonus {
+    width: 5.27rem;
+    height: 2.94rem;
+    border: 5px solid #fff;
+    padding: 0.46rem 0 0;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+.money {
+    font-family: Arial;
+    font-size: 1rem;
+}
+.RMB {
+    font-family: '微软雅黑';
+    font-size: 0.38rem;
+    font-weight: bold;
+}
+.type {
+    font-family: '微软雅黑';
+    font-size: 0.36rem;
+    margin-top: -24px;
+    font-weight: bold;
+}
+.graph img {
+    width: 84%;
+    margin: 1rem 8%;
+}

@@ -1,0 +1,16 @@
+<footer class="footer text-center footer-pos normal-mid" id="footer">
+  <div class="footer-up columns">
+    <a (click)="showFooter(1)" href="javascript:;" [routerLink]="['/']">
+      <div class="listen_icon1" [ngClass]="whichFooter != 1 && whichFooter? 'listen_icon2' : '' "></div>
+      <div class="listen1" [ngClass]="whichFooter != 1 && whichFooter ? 'listen2' : '' "></div>
+    </a>
+    <a (click)="showFooter(2);gotoTopic();" href="javascript:;" class="topic" >
+      <div class="topic_icon2" [ngClass]="whichFooter == 2 && whichFooter? 'topic_icon1' : '' "></div>
+      <div class="topic2" [ngClass]="whichFooter == 2 && whichFooter ? 'topic1' : '' "></div>
+    </a>
+    <a (click)="showFooter(3)" href="javascript:;" [routerLink]="['/user-center']">
+      <div class="me_icon2" [ngClass]="whichFooter == 3 && whichFooter? 'me_icon1' : '' "></div>
+      <div class="me2" [ngClass]="whichFooter == 3 && whichFooter ? 'me1' : '' "></div>
+    </a>
+  </div>
+</footer>

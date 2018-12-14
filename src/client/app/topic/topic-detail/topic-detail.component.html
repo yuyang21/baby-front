@@ -1,0 +1,106 @@
+<!--话题详情页-->
+
+<div class="topic-detail">
+  <div class="cont">
+    <div class="topic-introduce cleafix">
+      <p>{{Topic_content}}</p>
+      <div class="topic-video clearfix position-re margin-bt-36" (click)="playInfor($event)">
+        <div class="portrait position-ab"><img src="{{ portraitUrl || '/images/main/head.png'}}" alt="" class="header"></div>
+        <!--<img src="/images/main/horn.png" alt="" width="7%" class="horn fr">-->
+        <div class="horn">
+          <div class="small"></div>
+          <div class="middle"></div>
+          <div class="large"></div>
+        </div>
+      </div>
+      <p class="topic-video-time"><span *ngIf="tape?.durationMin > 0">{{ tape?.durationMin / 60 }}’</span>{{tape?.duration%60 || 0}}’’</p>
+      <!--听者详情 赞 赏 按钮-->
+      <div class="encourage" *ngIf="topic_userId != userId">
+        <div (click)="topicPraise()"><img src="/images/topic/admire.png" alt=""> <p class="tip">有用，赞一个</p></div>
+        <div (click)="topicAward()"><img src="/images/topic/award.png" alt=""> <p class="tip">太感谢了，赏一个</p></div>
+      </div>
+    </div>
+  </div>
+  <!--说者详情 没有提问时显示引导分享-->
+  <div class="share" *ngIf = "AnswersList == '' && topic_userId == userId">
+    <img src="/images/topic/share.png" alt="" class="display-bl" width="100%">
+  </div>
+
+  <!--听者提问输入框-->
+  <div class="txtCont-contain clearfix" *ngIf="topic_userId != userId">
+    <div class="txtCont">
+      <div class="txt">
+          <textarea class="textarea" rows="5" cols="6" maxlength="70" (keyup)="countChar()" placeholder="我想听你说"></textarea>
+          <p class="number">( {{Char_length}}/70 )</p>
+      </div>
+      <button type="button" class="txt_btn" (click)="goToAsk()">提问</button>
+    </div>  
+  </div> 
+  <!--有提问内容时   若是听者详情页，没有提问列表直接隐藏这段-->
+  <div class="topic-dialogue" *ngIf="AnswersList != ''">
+    <p class="ft-30 title">我听你说</p>
+    <ul class="dialogue-list">
+
+      <!-- ask answer begin-->
+      <li class="dialogue-list-item" *ngFor="let askAnswer of AnswersList; let i = index">
+        <div class="question clearfix" *ngIf="true">
+          <div class="portrait"><img src="/images/main/head.png" alt="" class="header"></div>
+          <div class="words ft-26">
+            <p class="ft-24">{{askAnswer.askUser.nickName || '用户名'}}</p>
+            {{askAnswer.ask.question}}
+          </div>
+        </div>
+        <!--<div [topicIdLink]="['/topic/detail']"></div>-->
+        <!--已回答过-->
+        <div class="answer clearfix" *ngIf='askAnswer.answer != null'>
+          <div (click)="playPause(i,$event,askAnswer?.tape?.duration)" class="answer-video clearfix position-re margin-b-0">
+            <div class="portrait position-ab"><img src="{{ portraitUrl || '/images/main/head.png'}}" alt="" class="header"></div>
+            <!--<img src="/images/main/horn.png" alt="" width="7%" class="horn fr">-->
+            <div class="horn">
+              <div class="small"></div>
+              <div class="middle"></div>
+              <div class="large"></div>
+            </div>
+          </div>
+          <p class="answer-video-time">{{askAnswer?.tape?.duration%60 || 0}}’’</p>
+          <audio id="audio" class="position-ab">
+            <source src="{{askAnswer?.tape?.path}}" type='audio/mp3' />
+            <p>Your user agent does not support the HTML5 Audio element.</p>
+          </audio>
+        </div>
+        
+        <!--待回答状态-->
+        <div class="answer answer1 clearfix" *ngIf="askAnswer.answer == null && topic_userId == userId">
+          <button class="answer-btn fr" (click)="toAnswer(askAnswer.ask)">回答</button>
+        </div>
+        <div *ngIf="askAnswer.answer != null">
+          <ul class="rewards cleafix overflow-hid margin-b-0 bg-white1">
+            <li>
+              <img src="/images/main/{{ issupportRecords1?.indexOf(askAnswer.answer.id) ==-1 ? 'reward11.png' : 'reward21.png'}}" alt="">
+              <span [class.supportRecords]="issupportRecords1?.indexOf(askAnswer.answer.id) !=-1">{{askAnswer.answer?.listenCount || 0}}</span>
+            </li>
+            <li (click)="answerPraise(askAnswer.answer?.id)">
+              <img src="/images/main/{{ issupportRecords2?.indexOf(askAnswer.answer.id) ==-1 ? 'reward12.png' : 'reward22.png'}}" alt="">
+              <span [class.supportRecords]="issupportRecords2?.indexOf(askAnswer.answer.id) !=-1">{{askAnswer.answer?.praiseCount || 0}}</span>
+            </li>
+            <li (click)="answerAward(askAnswer.answer?.id)">
+              <img src="/images/main/{{ issupportRecords3?.indexOf(askAnswer.answer.id) ==-1 ? 'reward13.png' : 'reward23.png'}}" alt="">
+              <span [class.supportRecords]="issupportRecords3?.indexOf(askAnswer.answer.id) !=-1">{{askAnswer.answer?.rewardCount || 0}}</span>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!--ask answer end-->
+
+    </ul>
+  </div>
+
+</div>
+
+<!--成功提示 公用的可提出（提问成功，回答成功）-->
+<div class="toast toast-success text-center" *ngIf="isMask">
+  <img src="/images/topic/toast-success.png" alt="" class="display-bl">
+  <p class="ft-25">{{succeedMsg}}</p>
+</div>
+  <!--错误提示框-->
+<div class="toast" *ngIf="isToast">{{errorMessage}}</div>

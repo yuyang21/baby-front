@@ -1,0 +1,18 @@
+<div class="award">
+  <p>您要打赏几两银子？</p>
+  <div class="award-list">
+    <ul class="clearfix">
+      <li>1元</li>
+      <li>2元</li>
+      <li>10元</li>
+      <li class="margin-0" (click)="inputMore = !inputMore">更多</li>
+    </ul>
+  </div>
+  <div class="award-input" *ngIf="inputMore">
+    <input type="number">
+    <span><i></i>元</span>  
+  </div>
+  <div class="award-btn">
+    <button type="submit" class="virify-btn">确认</button>
+  </div>
+</div>

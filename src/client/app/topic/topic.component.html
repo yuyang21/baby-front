@@ -1,0 +1,68 @@
+<!--录音页面-->
+<div class="topic" id="topic">
+    <div class="txtCont">
+        <div class="edit" *ngIf="txtCont">
+            <!--文字录入内容-->
+            <div class="txt">
+                <textarea class="textarea" rows="5" cols="6" maxlength="70" (keyup)="countChar()" placeholder = "请简单介绍您录制的内容（70字以内）" value="{{Char_val}}" autofocus required></textarea>
+                
+                <p class="number">( {{Char_length}}/70 )</p>
+            </div>
+            <!--完成按钮-->
+            <button type="button" class="txt_btn" (click)="saveVal()">完成</button>
+        </div>
+        <div class="finished" *ngIf="!txtCont">
+            <div class="txt2">{{Char_val}}</div>
+            <button type="button" class="txt_btn2" (click)="editVal()">编辑</button>
+        </div>
+    </div>
+    <div class="record">
+        <!--录音进度-->
+        <div class="progress">
+            <span class="progress1" (click)="record_num(1)">录音1</span>
+            <span class="progress2" (click)="record_num(2)">录音2</span>
+            <span class="progress3" (click)="record_num(3)">录音3</span>
+            <span class="progress4" (click)="record_num(4)">录音4</span>
+            <span class="progress5" (click)="record_num(5)">录音5</span>
+        </div>
+        <!--录音时长-->
+        <div class="second">
+            {{ step? step : recordT ? recordT :totalSecond }}"
+        </div>
+        <!--录音触发按钮-->
+        <div class="trigger" (click)="record_srart()">
+            <div class="time">
+                <div class="wrapper right">
+                    <div class="circle rightcircle" id="rightcircle"></div>
+                </div>
+                <div class="wrapper left">
+                    <div class="circle leftcircle" id="leftcircle"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showBtn">
+            <!--继续录音提示-->
+            <div class="record_tip" *ngIf="index >1 && index <10">点击继续录音</div>
+            <!--发布按钮-->
+            <div class="release_btns">
+                <span class="audition" (click)="gotoRelease('.audition')">试听</span>
+                <span class="recorded" (click)="gotoRelease('.recorded')">重录</span>
+                <span class="release active" (click)="gotoRelease('.release')">发布</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--发布成功弹窗-->
+<div class="mask" *ngIf="showMask">
+    <div class="release_successed">
+        <div class="close" (click)="showMask = false;" [routerLink]="['/']"></div>
+        <img class="successed" src="/images/topic/successed.png" alt="">
+        <div class="content">
+            <p>发布成功</p>
+            <p>邀请好友来听听吧～</p>
+        </div>
+    </div>
+</div>
+<!--错误提示框-->
+<div class="toast" *ngIf="isToast">{{errorMessage}}</div>
+
